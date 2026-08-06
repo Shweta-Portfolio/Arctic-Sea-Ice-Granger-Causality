@@ -4,7 +4,8 @@
 
 ## Overview
 
-The AO project used PCMCI and a permutation test to argue that winter Arctic Oscillation carries real predictive information about September sea ice extent. This notebook asks the same question with Granger causality, the older and more standard tool for exactly this kind of claim, run properly rather than as a quick sanity check.
+The AO project used Ridge regression and a permutation test to argue that winter
+Arctic Oscillation carries real predictive information about September sea ice extent. This notebook asks the same question with Granger causality, the older and more standard tool for exactly this kind of claim, run properly rather than as a quick sanity check.
 
 Doing this surfaced a second question along the way. Granger causality requires a stationary target series, and September ice extent is not stationary on its own. Fixing that turned into a small, self-contained test of the 2007 structural break already identified in [Arctic-Sea-Ice-Trend-Break](https://github.com/Shweta-Portfolio/Arctic-Sea-Ice-Trend-Break), from a completely different angle than the one used there.
 
@@ -55,11 +56,20 @@ At every lag tested, winter AO's past does not significantly improve the predict
 
 ## Interpretation
 
-This does not match the AO project's own conclusion, where a permutation test found AO's contribution unlikely to be due to chance. That disagreement is reported here directly rather than resolved in either direction.
+This result differs from the AO project's own conclusion, where a permutation test
+found AO's contribution unlikely to be due to chance. That difference is reported
+here directly rather than resolved in either direction.
 
-A few honest, non-exclusive possibilities: Granger causality is a linear VAR-based test, while PCMCI tests for a broader class of conditional dependencies, so PCMCI may be catching something genuinely nonlinear that this test cannot see. It is also possible the original permutation test result partly reflects the small sample size (45 winters) working in AO's favour by chance in that specific test, something a single permutation test reduces but does not eliminate. It is also possible the two methods are simply answering different questions, in a way that makes some disagreement expected rather than a contradiction that needs to be explained away.
+One likely reason: the AO project's permutation test evaluated AO inside a
+multivariate Ridge regression, alongside other controls, previous September extent,
+April extent, and winter mean extent. This Granger test only controls for ice
+extent's own past, a narrower comparison, so it could miss a contribution AO makes
+jointly with those other variables rather than on its own.
 
-One thing is not ambiguous: the piecewise detrending step, built entirely around the break year from the Trend-Break project, is the only one of three approaches that produces a stationary series. That is a real, useful, independent piece of evidence for that break, obtained as a byproduct of a test built for a different purpose.
+It is also possible the original permutation test result partly reflects the small
+sample size, 45 winters, working in AO's favour by chance in that specific test,
+something a single permutation test reduces but does not eliminate.
+
 
 ## Limitations
 
