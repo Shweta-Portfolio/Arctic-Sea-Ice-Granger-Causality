@@ -76,7 +76,7 @@ alongside persistence, and both of those things are true at once.
 - 45 annual observations constrains every test here in the same way it constrains the other three projects in this series
 - Granger causality as applied is linear; a nonlinear variant was not tested
 - The 2007 break year is taken from the Trend-Break project rather than re-searched here, so this result depends on that project's break-point estimate being correct
-- This notebook does not attempt to adjudicate between the Granger result and the PCMCI result; both are reported as they stand
+- The permutation-based reconciliation checks whether AO's significance survives on a corrected target, but does not test every possible explanation for method differences between Granger causality and Ridge regression with persistence
 
 ## Reproducing
 
