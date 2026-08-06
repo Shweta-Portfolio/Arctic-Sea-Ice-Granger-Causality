@@ -57,18 +57,18 @@ At every lag tested, winter AO's past does not significantly improve the predict
 ## Interpretation
 
 This result differs from the AO project's own conclusion, where a permutation test
-found AO's contribution unlikely to be due to chance. That difference is reported
-here directly rather than resolved in either direction.
+found AO's contribution unlikely to be due to chance. That difference was checked
+directly rather than left unresolved.
 
-One likely reason: the AO project's permutation test evaluated AO inside a
-multivariate Ridge regression, alongside other controls, previous September extent,
-April extent, and winter mean extent. This Granger test only controls for ice
-extent's own past, a narrower comparison, so it could miss a contribution AO makes
-jointly with those other variables rather than on its own.
-
-It is also possible the original permutation test result partly reflects the small
-sample size, 45 winters, working in AO's favour by chance in that specific test,
-something a single permutation test reduces but does not eliminate.
+The AO project's own method, Ridge regression with persistence as a control and a
+permutation test, was rerun here using the corrected, properly stationary target
+this notebook builds. AO's contribution stayed significant, p = 0.026, meaning the
+original finding was not an artifact of the non stationary target Granger
+causality flagged. The disagreement instead comes from what each method actually
+tests. Granger causality asks whether AO's own past predicts ice extent on its
+own. The AO project's method asks whether AO adds anything once persistence is
+already accounted for. AO does not help much alone, but does help a little
+alongside persistence, and both of those things are true at once.
 
 
 ## Limitations
